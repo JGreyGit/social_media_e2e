@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,6 +17,10 @@ public class insta_loginObjs {
 	}
 
 	//Lets create Objects
+////div[@class="piCib"]//button[@class="aOOlW  bIiDR
+
+	@FindBy(xpath =  "//div[@class='piCib']//button[@class='aOOlW  bIiDR  ']")
+	WebElement CookiesAccept;
 
 	@FindBy(xpath = "//*[@name='username']")
 	WebElement InstaUsrnme;
@@ -30,6 +35,12 @@ public class insta_loginObjs {
 
 
 	//Lets create Actions
+
+	public void cookies_Accept(){
+		if(CookiesAccept.isDisplayed()){
+			CookiesAccept.click();
+		}
+	}
 	public void setInstaUsrnme(String name){
 
 		InstaUsrnme.clear();

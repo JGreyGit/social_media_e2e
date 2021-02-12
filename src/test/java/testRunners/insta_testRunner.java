@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-		features = {"src\\test\\Resources\\features\\instagramLikeAuto.feature"},
-		glue = {"stepDefinition\\instaLikeStedDef"},
+		features = {"src\\test\\Resources\\features\\twitterPost.feature"},
+		glue = {"stepDefinition\\INSDef"},
 		plugin = {"pretty" ,  "html:test-output","html:target/report/cucumber", "json:target/report/json/login.json"},
 		monochrome = true
 )

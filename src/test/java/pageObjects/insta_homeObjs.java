@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -21,6 +22,20 @@ public class insta_homeObjs {
 	}
 
 	//Objects
+	//Ways of writing Objects:
+
+	//1
+	@FindBy(how = How.XPATH, using = "//*[text()='Top posts']")
+	WebElement topPostTxt2;
+
+	//2
+
+	@FindBy(name="username")
+	private WebElement user_name;
+	//
+
+	//Ways I will be writing objects
+
 	@FindBy(xpath = "/*[@class = 'COOzN ']//*[contains(text(),'Stories')]")
 	WebElement Stories_Text;
 
@@ -43,7 +58,7 @@ public class insta_homeObjs {
 	WebElement Search_X_button;
 
 
-	@FindBy(xpath = "//span[@class='Ap253']")
+	@FindBy(xpath = "//div[@class='fuqBx']")
 	WebElement Search_First_item;
 
 	@FindBy(xpath = "//button[@class='dCJp8 ']")
@@ -63,11 +78,11 @@ public class insta_homeObjs {
 	WebElement TurnOnNotificationMssge;
 
 
-	@FindBy(xpath = "//section[@class='ltpMr Slqrh']//*[@aria-label='Like']//parent::button")
-	WebElement likeHeart;
-
-//	@FindBy(xpath = "//section[@class='ltpMr Slqrh']//*[@aria-label='Like']")
+//	@FindBy(xpath = "//section[@class='ltpMr Slqrh']//*[@aria-label='Like']//parent::button")
 //	WebElement likeHeart;
+
+	@FindBy(xpath = "//section[@class='ltpMr Slqrh']//*[@aria-label='Like']")
+	WebElement likeHeart;
 
 	@FindBy(xpath = "//*[@aria-label='More options']")
 	WebElement moreOptionsEllipse ;
@@ -83,6 +98,8 @@ public class insta_homeObjs {
 
 	@FindBy(xpath = "//*[text()='Top posts']")
 	WebElement topPostTxt;
+
+
 
 	@FindBy(xpath = "//*[text()='Most recent']")
 	WebElement postRecentTxt;
@@ -112,7 +129,7 @@ public class insta_homeObjs {
 	WebElement articlePostFeed;
 
 
-	@FindBy(xpath = "//*[@class='_2dDPU CkGkG']//button//*[@aria-label='Close']//parent::button")
+	@FindBy(xpath = "//button[@class='wpO6b ']//*[@aria-label='Close']")
 	WebElement xPost;
 
 	@FindBy(xpath = ("//*[@style='overflow: hidden;']"))
@@ -121,7 +138,7 @@ public class insta_homeObjs {
 
 //actions
 
-	public WebElement xPost()
+	public WebElement  xPost()
 	{
 		return xPost;
 	}
@@ -166,9 +183,9 @@ public class insta_homeObjs {
 	public void Search_X() { Search_X_button.click();}
 
 	public  void chooseFirstOnList(String hashtag) throws InterruptedException {
-
+		String removeHashfromSearchItem = hashtag.substring(1,10);
 		Search_First_item
-				.findElement(By.xpath("//*[text()='" + hashtag + "']"))
+				.findElement(By.xpath("//*[text()='" + removeHashfromSearchItem + "']"))
 				.click();
 		driver.navigate().refresh();
 	}

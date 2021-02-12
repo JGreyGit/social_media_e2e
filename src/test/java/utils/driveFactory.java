@@ -36,7 +36,7 @@ public class driveFactory extends insta_constants {
 
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.get(url);
+		driver.get(configProperties.getPropertyValue("twitterUrl"));
 
 	}
 }

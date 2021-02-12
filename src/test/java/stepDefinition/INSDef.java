@@ -21,7 +21,7 @@ import java.util.Random;
 
 import static org.openqa.selenium.support.PageFactory.initElements;
 
-public class instaLikeStepDef extends driveFactory {
+public class INSDef extends driveFactory {
 
 	private static readProperties configProperties = new readProperties("./src/test/Resources/config/config.properties");
 	insta_homeObjs IHOpage;
@@ -33,6 +33,8 @@ public class instaLikeStepDef extends driveFactory {
 		System.out.println("Initialiasing driver");
 		IHOpage = initElements(driver, insta_homeObjs.class);
 		ILOpage = initElements(driver, insta_loginObjs.class);
+
+		ILOpage.cookies_Accept();
 
 		ILOpage.setInstaUsrnme(usrname);
 
@@ -58,11 +60,11 @@ public class instaLikeStepDef extends driveFactory {
 			System.out.println(e.getMessage());
 		}
 		Thread.sleep(2000);
-		Assert.assertTrue(IHOpage.notififactionMessge());
-		IHOpage.clickNotif();
+
+//		IHOpage.notififactionMessge();
+//		IHOpage.clickNotif();
 
 		Assert.assertTrue(IHOpage.InstagramIconVisible());
-
 		IHOpage.Instagram_icon();
 	}
 
@@ -70,12 +72,10 @@ public class instaLikeStepDef extends driveFactory {
 	public void user_types_in_search_field_a_hashtag(String hshtag) {
 		Assert.assertTrue(IHOpage.SearchBarVisible());
 		IHOpage.SearchBar(hshtag);
-
 	}
 
 	@When("navigates to ([^\"]*)")
 	public void clicks_on_hashtag(String searchHshTag) throws InterruptedException {
-		Assert.assertTrue(IHOpage.searchedItemVisible(searchHshTag));
 		IHOpage.chooseFirstOnList(searchHshTag);
 	}
 
@@ -133,22 +133,14 @@ public class instaLikeStepDef extends driveFactory {
 					System.out.println(e.getMessage());
 					continue;
 				}
-//				Thread.sleep(1000);
-//
-//				wait.until(ExpectedConditions.elementToBeClickable(IHOpage.xPost())).click();
-			}	Thread.sleep(1000);
+				Thread.sleep(1000);
+				wait.until(ExpectedConditions.elementToBeClickable(IHOpage.xPost())).click();
+			}
+
+			Thread.sleep(1000);
 
 			wait.until(ExpectedConditions.elementToBeClickable(IHOpage.xPost())).click();
-
 		}
-
-////			//need ot write some IF rules>>>
-////			//1) if not liked already , then like the post
-////			//2) if already liked , then ignore and go to next post
-////		}
-//	}
-//
-
 	}
 }
 

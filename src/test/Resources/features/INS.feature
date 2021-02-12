@@ -15,7 +15,7 @@ Feature: Using Instagram Liking Functionality
     Examples:
       | username |password| hashtag|
       |humansofunny|Joshua123*|#funnymeme|
-      |humansofunny|Joshua123*|#loveyourself|
+     # |humansofunny|Joshua123*|#loveyourself|
 
 
 
